@@ -29,3 +29,4 @@ $fb->Request("ExecuteQueryRq", [
       string(60) ""2018-12-11 00:00:00.0","******","**53""
       ...
 ```
+More info about Fishbowl API: https://www.fishbowlinventory.com/wiki/Fishbowl_API

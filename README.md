@@ -10,23 +10,41 @@ $fb->Login("Your username in Fishbowl","Your password in Fishbowl");
 ## query example:
 ```php 
 $fb->Request("ExecuteQueryRq", [
-  "Query"=>"select PO.datefirstship, POITEM.PARTNUM,PO.NUM from PO inner join POITEM ON POITEM.POID = PO.ID WHERE (POITEM.STATUSID = 10 OR POITEM.STATUSID = 30) ORDER BY datefirstship ASC"
+  "Query"=>"select datefirstship from PO limit 3"
 ]);
+var_dump($fb->Response());
 ```
 
-## response example (var_dump):
-```
-["statusCode"]=> int(1000)
-  ["Rows"]=> array(1) {
-    ["Row"]=> array(390) {
-      [0]=>
-      string(31) ""datefirstship","PARTNUM","NUM""
-      [1]=>
-      string(58) ""2018-09-04 00:00:00.0","****/15.5","2***""
-      [2]=>
-      string(58) ""2018-12-11 00:00:00.0","Hydro-***** Y/17","***3""
-      [3]=>
-      string(60) ""2018-12-11 00:00:00.0","******","**53""
-      ...
+## response example (array with var_dump):
+```console
+[root@web]# php fishbowltest.php
+  array(4) {
+    ["code"]=>
+    int(1000)
+    ["message"]=>
+    string(9) " Success!"
+    ["is_error"]=>
+    bool(false)
+    ["data"]=>
+    array(2) {
+      ["statusCode"]=>
+      int(1000)
+      ["Rows"]=>
+      array(1) {
+        ["Row"]=>
+        array(4) {
+          [0]=>
+          string(15) ""datefirstship""
+          [1]=>
+          string(23) ""2012-10-12 00:00:00.0""
+          [2]=>
+          string(23) ""2012-10-05 00:00:00.0""
+          [3]=>
+          string(23) ""2012-09-29 00:00:00.0""
+        }
+      }
+    }
+  }
+[root@web]#
 ```
 More info about Fishbowl API: https://www.fishbowlinventory.com/wiki/Fishbowl_API

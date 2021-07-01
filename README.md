@@ -6,6 +6,7 @@ $fb = new FishbowlAPIJSON;
 $fb->SetHostInfo('IP or URL to Your Fishbowl API','Port for Your Fishbowl API');
 $fb->SetAppInfo("Your App name", "Your App ID", "Your App description");
 $fb->Login("Your username in Fishbowl","Your password in Fishbowl");
+$fb->Logout();
 ```
 ## query example:
 ```php 

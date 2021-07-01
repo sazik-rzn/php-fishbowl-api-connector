@@ -359,6 +359,7 @@ class FishbowlAPIJSON {
     }
 
     public function Logout(){
+        $this->Request("LogoutRq", "");
         fclose($this->_connection);
         $this->_next = 'SetHostInfo';
     }

@@ -43,7 +43,7 @@ class FishbowlAPIJSON {
     public function Login($name, $pwd){
         if($this->_next == 'Login'){
             $this->_user = $name;
-            $this->_password = base64_encode(md5($pwd, true));
+            $this->_password = $pwd;
 
             $this->Request("LoginRq", [
                 "IAID"=>$this->_appKey,
@@ -359,6 +359,7 @@ class FishbowlAPIJSON {
     }
 
     public function Logout(){
+        $this->Request("LogoutRq", "");
         fclose($this->_connection);
         $this->_next = 'SetHostInfo';
     }
